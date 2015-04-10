@@ -1,0 +1,127 @@
+## Clinicopathologic features
+```{r DataSet, message = FALSE}
+# Loading the dataset for analysis
+source("PFCK_RCC_Tidy.R")
+# Loading the simpleR package
+library(simpleR)
+```
+
+### Patient's age at diagnosis
+```{r Age}
+var <- Data_Wide$Age
+lab <- "Patient's age, yrs"
+numerical.plot(var, label = lab)
+descriptive.numerical(var)
+```
+
+***
+
+### Patient's sex
+```{r Sex}
+var <- Data_Wide$Sex
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Patient's race
+```{r Race}
+var <- Data_Wide$Race
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### pT stage
+```{r pT}
+var <- Data_Wide$pT
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Fuhrman grade
+```{r Fuhrman}
+var <- Data_Wide$Fuhrman
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Multifocal tumor
+```{r Multifocal}
+var <- Data_Wide$Multifocal
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Tumor surgical margin
+```{r Margin}
+var <- Data_Wide$Margin
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Tumor size
+```{r Size}
+var <- Data_Wide$Size
+lab <- "Tumor size, cm"
+numerical.plot(var, label = lab)
+descriptive.numerical(var)
+```
+
+***
+
+### Tumor in other anatomical location
+```{r Other_Tumor}
+var <- Data_Wide$Other_Tumor
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Patient's outcome
+```{r Outcome}
+var <- Data_Wide$Outcome
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Cancer-related death
+```{r DOD}
+var <- Data_Wide$DOD
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Tumor progression
+```{r Progression}
+var <- Data_Wide$Progression
+categorical.plot(var)
+descriptive.categorical(var)
+```
+
+***
+
+### Follow-up from surgery, months
+```{r FU}
+var <- Data_Wide$FU/30
+lab <- "Follow-up, months"
+numerical.plot(var, label = lab)
+descriptive.numerical(var)
+```
+
+***

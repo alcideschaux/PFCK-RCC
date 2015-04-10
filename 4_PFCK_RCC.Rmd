@@ -1,0 +1,187 @@
+## PFCK expression in nontumor vs. tumor tissue
+```{r DataSet, message = FALSE}
+# Loading the dataset for analysis
+source("PFCK_RCC_Tidy.R")
+# Selecting only primary cases
+Data <- subset(Data, Tissue == "Primary")
+# Loading the simpleR package
+library(simpleR)
+# Sourcing functions for paired data
+source("Paired_Data.R")
+# Setting global options
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.width = 9)
+# Versus variables and labels
+Data$Tissue_T <- "Tumor Tissue"
+Data$Tissue_NT <- "Nontumor Tissue"
+Tissue_Type <- factor(c(Data$Tissue_NT, Data$Tissue_T))
+NT_lab <- "Nontumor tissue"
+T_lab <- "Tumor tissue"
+```
+
+### Percentage of PDL1+ nontumor vs. tumor cells
+```{r PDL1_NvT_Percentage}
+NT_var <- log10(Data$PDL1_Nontumor_Percentage + 1)
+T_var <- log10(Data$PDL1_Tumor_Percentage + 1)
+yaxis <- "PDL1+ cells, log %"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Location of PDL1 positivity in nontumor vs. tumor cell structure
+```{r PDL1_NvT_Location}
+NT_var <- Data$PDL1_Nontumor_Location
+T_var <- Data$PDL1_Tumor_Location
+NvT <- unlist(list(NT_var, T_var))
+labx <- "Location of PDL1 positivity"
+categorical.group.plot2(NvT, Tissue_Type, xlab = labx)
+```
+
+***
+
+### H-score of PDL1 expression in nontumor vs. tumor cells
+```{r PDL1_NvT_H}
+NT_var <- log10(Data$PDL1_Nontumor_H + 1)
+T_var <- log10(Data$PDL1_Tumor_H + 1)
+yaxis <- "PDL1, log H-score"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Percentage of PDL1+ inflammatory cells in stroma of nontumor vs. tumor tissue
+```{r PDL1_NvT_Stroma_Percentage}
+NT_var <- log10(Data$PDL1_Nontumor_Stroma_Percentage + 1)
+T_var <- log10(Data$PDL1_Tumor_Stroma_Percentage + 1)
+yaxis <- "PDL1+ in stroma, log %"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Total host response in nontumor vs. tumor tissue and stroma
+```{r Host_Response_NvT}
+NT_var <- Data$Host_Response_Nontumor
+T_var <- Data$Host_Response_Tumor
+NvT <- unlist(list(NT_var, T_var))
+labx <- "Total host response"
+categorical.group.plot2(NvT, Tissue_Type, xlab = labx)
+```
+
+***
+
+### Number of FOXP3+ lymphocytes in nontumor vs. tumor tissue
+```{r FOXP3_NvT_Lymphocytes}
+NT_var <- log10(Data$FOXP3_Nontumor_Lymphocytes + 1)
+T_var <- log10(Data$FOXP3_Tumor_Lymphocytes + 1)
+yaxis <- "FOXP3+ lymphocytes, log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Number of FOXP3+ lymphocytes in stroma of nontumor vs. tumor tissue
+```{r FOXP3_NvT_Stroma_Lymphocytes}
+NT_var <- log10(Data$FOXP3_Nontumor_Stroma_Lymphocytes + 1)
+T_var <- log10(Data$FOXP3_Tumor_Stroma_Lymphocytes + 1)
+yaxis <- "FOXP3+ lymphocytes in stroma, log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Intensity of FOXP3 staining in lymphocytes in nontumor vs. tumor tissue
+```{r FOXP3_NvT_Lymphocytes_Intensity}
+NT_var <- Data$FOXP3_Nontumor_Lymphocytes_Intensity
+T_var <- Data$FOXP3_Tumor_Lymphocytes_Intensity
+NvT <- unlist(list(NT_var, T_var))
+labx <- "FOXP3 staining intensity in lymphocytes"
+categorical.group.plot2(NvT, Tissue_Type, xlab = labx)
+```
+
+***
+
+### Number of FOXP3+ nontumor vs. tumor cells
+```{r FOXP3_NvT, eval = FALSE}
+NT_var <- log10(Data$FOXP3_Nontumor + 1)
+T_var <- log10(Data$FOXP3_Tumor + 1)
+yaxis <- "FOXP3+ cells, log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+No plots or comparisons are generated due to the fact that all observations had the same values.
+
+***
+
+### Intensity of FOXP3 staining in nontumor vs. tumor cells
+```{r FOXP3_NvT_Intensity}
+NT_var <- Data$FOXP3_Nontumor_Intensity
+T_var <- Data$FOXP3_Tumor_Intensity
+NvT <- unlist(list(NT_var, T_var))
+labx <- "FOXP3 staining intensity"
+categorical.group.plot2(NvT, Tissue_Type, xlab = labx)
+```
+
+***
+
+### Percentage of FOXP3+ nontumor vs. tumor cells
+```{r FOXP3_NvT_Percentage, eval = FALSE}
+NT_var <- log10(Data$FOXP3_Nontumor_Percentage + 1)
+T_var <- log10(Data$FOXP3_Tumor_Percentage + 1)
+yaxis <- "FOXP3+ cells, % log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+No plots or comparisons are generated due to the fact that all observations had the same value.
+
+***
+
+### Number of CD8+ in nontumor vs. tumor tissue
+```{r CD8_NvT}
+NT_var <- log10(Data$CD8_Nontumor + 1)
+T_var <- log10(Data$CD8_Tumor + 1)
+yaxis <- "CD8+ cells, log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Number of CD8+/Ki67+ lymphocytes in nontumor vs. tumor tissue
+```{r CD8_Ki67_NvT}
+NT_var <- Data$CD8_Ki67_Nontumor
+T_var <- Data$CD8_Ki67_Tumor
+yaxis <- "CD8+/Ki67+ lymphocytes, log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Number of CD8+ in stroma of nontumor vs. tumor tissue
+```{r CD8_NvT_Stroma}
+NT_var <- Data$CD8_Nontumor_Stroma
+T_var <- Data$CD8_Tumor_Stroma
+yaxis <- "CD8+ cells in stroma, log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Number of CD8+/Ki67+ in stroma of nontumor vs. tumor tissue
+```{r CD8_NvT_Tumor_Stroma}
+NT_var <- Data$CD8_Ki67_Nontumor_Stroma
+T_var <- Data$CD8_Ki67_Tumor_Stroma
+yaxis <- "CD8+/Ki67+ cells in stroma, log"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***
+
+### Percentage of Ki67+ nontumor vs. tumor cells
+```{r Ki67_NvT_Percentage}
+NT_var <- Data$Ki67_Nontumor_Percentage
+T_var <- Data$Ki67_Tumor_Percentage
+yaxis <- "Ki67+ cells, log %"
+numerical.group.plot2(NT_var, T_var, NT_lab, T_lab, labmain = yaxis)
+```
+
+***

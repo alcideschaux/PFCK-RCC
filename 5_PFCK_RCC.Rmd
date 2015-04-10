@@ -1,0 +1,155 @@
+## PFCK expression in primary vs. metastatic tumors
+```{r DataSet, message = FALSE}
+# Loading the dataset for analysis
+source("PFCK_RCC_Tidy.R")
+# Loading the simpleR package
+library(simpleR)
+# Sourcing functions for paired data
+source("Paired_Data.R")
+# Setting global options
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.width = 9)
+# Versus variables
+vary <- Data$Tissue
+```
+
+### Percentage of PDL1+ tumor cells
+```{r PDL1_PvM_Percentage}
+varx <- log10(Data$PDL1_Tumor_Percentage + 1)
+yaxis <- "PDL1+ cells, log %"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Location of PDL1 positivity in tumor cell structure
+```{r PDL1_PvM_Location}
+varx <- Data$PDL1_Tumor_Location
+categorical.group.plot2(varx, vary)
+```
+
+***
+
+### H-score of PDL1 expression in tumor cells
+```{r PDL1_PvM_H}
+varx <- log10(Data$PDL1_Tumor_H + 1)
+yaxis <- "PDL1, log H-score"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Percentage of PDL1+ inflammatory cells in stroma of tumor tissue
+```{r PDL1_PvM_Stroma_Percentage}
+varx <- log10(Data$PDL1_Tumor_Stroma_Percentage + 1)
+yaxis <- "PDL1+ inflammatory cells in stroma, log %"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Total host response in tumor tissue and stroma
+```{r Host_Response_PvM}
+varx <- Data$Host_Response_Tumor
+categorical.group.plot2(varx, vary)
+```
+
+***
+
+### Number of FOXP3+ lymphocytes in tumor tissue
+```{r FOXP3_PvM_Lymphocytes}
+varx <- log10(Data$FOXP3_Tumor_Lymphocytes + 1)
+yaxis <- "FOXP3+ lymphocytes, log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Number of FOXP3+ lymphocytes in stroma of tumor tissue
+```{r FOXP3_PvM_Stroma_Lymphocytes}
+varx <- log10(Data$FOXP3_Tumor_Stroma_Lymphocytes + 1)
+yaxis <- "FOXP3+ lymphocytes in stroma, log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Intensity of FOXP3 staining in lymphocytes in tumor tissue
+```{r FOXP3_PvM_Lymphocytes_Intensity}
+varx <- Data$FOXP3_Tumor_Lymphocytes_Intensity
+categorical.group.plot2(varx, vary)
+```
+
+***
+
+### Number of FOXP3+ tumor cells
+```{r FOXP3_PvM}
+varx <- log10(Data$FOXP3_Tumor + 1)
+yaxis <- "FOXP3+ tumor cells, log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Intensity of FOXP3 staining in tumor cells
+```{r FOXP3_PvM_Intensity}
+varx <- Data$FOXP3_Tumor_Intensity
+categorical.group.plot2(varx, vary)
+```
+
+***
+
+### Percentage of FOXP3+ tumor cells
+```{r FOXP3_PvM_Percentage, eval = FALSE}
+varx <- log10(Data$FOXP3_Tumor_Percentage + 1)
+yaxis <- "FOXP3+ tumor cells, % log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+**Plots not generated:** all observations were in the same group.
+
+***
+
+### Number of CD8+ in tumor tissue
+```{r CD8_PvM}
+varx <- log10(Data$CD8_Tumor + 1)
+yaxis <- "CD8+ tumor cells, log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Number of CD8+/Ki67+ lymphocytes in tumor tissue
+```{r CD8_Ki67_PvM}
+varx <- log10(Data$CD8_Ki67_Tumor + 1)
+yaxis <- "CD8+/Ki67+ lymphocytes, log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Number of CD8+ in stroma of tumor tissue
+```{r CD8_PvM_Stroma}
+varx <- log10(Data$CD8_Tumor_Stroma + 1)
+yaxis <- "CD8+ cells in stroma, log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Number of CD8+/Ki67+ in stroma of tumor tissue
+```{r CD8_PvM_Tumor_Stroma}
+varx <- log10(Data$CD8_Ki67_Tumor_Stroma + 1)
+yaxis <- "CD8+/Ki67+ cells in stroma, log"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
+
+### Percentage of Ki67+ tumor cells
+```{r Ki67_PvM_Percentage}
+varx <- log10(Data$Ki67_Tumor_Percentage + 1)
+yaxis <- "Ki67+ tumor cells, log %"
+numerical.group.plot(varx, vary, lab = yaxis)
+```
+
+***
