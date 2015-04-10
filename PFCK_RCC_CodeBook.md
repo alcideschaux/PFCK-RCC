@@ -1,6 +1,3 @@
----
-output: pdf_document
----
 ## Codebook
 This document contains the codebook for the "PFCK in ccRCC" study, describing the variables included in the full dataset. The number in brackets indicate the column number in the dataset, followed by the column (variable) name in quotation marks.
 
