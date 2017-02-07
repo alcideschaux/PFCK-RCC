@@ -1,31 +1,10 @@
-## PFCK in RCC
-Expression of PDL1/FOXP3/CD8/Ki67 in primary and metastatic renal cell carcinomas.
+# PFCK in ccRCC
+- Title: Expression status and prognostic value of PDL1, FOXP3, CD8 and Ki67 immunohistochemical expression in clear cell renal cell carcinoma
+- Authors: Gunes Guner^1^; Margaret Cocks^1^; Diana Taheri^1^; Mark W. Ball^2^; Stephania M. Bezerra^1^; Alan Meeker^1^; Maria del Carmen Rodriguez^1^; Alcides Chaux^1,4^; Arthur Burnett^1^; George Netto^5^;
+- Affiliations: Departments of ^1^Pathology, ^2^Urology and ^3^Oncology, The Johns Hopkins Medical Institutions, Baltimore, MD; ^4^Centro para el Desarrollo de la Investigación Científica (CEDIC), Asuncion, PRY; ^5^Department of Pathology, The University of Alabama at Birmingham, Birmingham, AL
 
-```r
-# Loading the dataset for analysis
-source("PFCK_RCC_Tidy.R")
-# Loading the simpleR package
-library(simpleR)
-```
+Last update: 2017-02-07
 
-## Methodology
-* [__Describing the dataset by patients:__](https://github.com/alcideschaux/PFCK-RCC/blob/master/1_PFCK_RCC.md) In this section we describe the dataset considering each patient as one case. This implies that variables were measured only once per patient. The total number of patients is 112. The variables included in the description are patient's age, patient's sex, patient's race, pT stage, Fuhrman grade, tumor multifocality, tumor surgical margin, tumor size, tumor in other anatomical location, patient's outcome, cancer-related death, tumor progression, and follow-up from surgery.
-* __Describing the dataset by TMA spots:__ In this section we describe the dataset considering each TMA spot as one case. This implies that variables were measured multiple times per patient. The total number of TMA spots is 413. The analysis is splitted into the following subsections, each one encompassing evaluation of the expression of PFDL1, FOXP3, CD8 and Ki67.
-    + [Expression in nontumor tissue](https://github.com/alcideschaux/PFCK-RCC/blob/master/2_PFCK_RCC.md)
-    + [Expression in tumor tissue](https://github.com/alcideschaux/PFCK-RCC/blob/master/3_PFCK_RCC.md)
-    + [Comparing nontumor vs. tumor in primary tumors](https://github.com/alcideschaux/PFCK-RCC/blob/master/4_PFCK_RCC.md)
-    + [Comparing primary vs. metastatic tumors](https://github.com/alcideschaux/PFCK-RCC/blob/master/5_PFCK_RCC.md)
-* __Expression as predictor of tumor progression:__ under evaluation.
-    + Association analysis in primary tumors
-    + Logistic regression models
-* __Expression as predictor of cancer-related death:__ under evaluation.
-    + Association analysis in primary tumors
-    + Logistic regression models
-    + Cox's proportional hazards regression models
+https://alcideschaux.github.io/PFCK-ccRCC/
 
-### Supporting files
-* [Codebook](https://github.com/alcideschaux/PFCK-RCC/blob/master/PFCK_RCC_CodeBook.md)
-* [Dataset](https://github.com/alcideschaux/PFCK-RCC/blob/master/Dataset/RCC_Dataset.csv)
-* [R script for tidying data](https://github.com/alcideschaux/PFCK-RCC/blob/master/PFCK_RCC_Tidy.R)
-* [R script for cleaning up data](https://github.com/alcideschaux/PFCK-RCC/blob/master/Dataset/MMR_RCC_Tidy.R)
-* [Figures](https://github.com/alcideschaux/PFCK-RCC/tree/master/figure)
+
