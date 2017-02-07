@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Outcome analysis for metastatic tumors</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PFCK in ccRCC</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Descriptive analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Cohort features</li>
+    <li class="divider"></li>
+    <li>
+      <a href="descriptive-cohort-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="descriptive-cohort-metastatic.html">Metastatic tumors</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Markers features</li>
+    <li class="divider"></li>
+    <li>
+      <a href="descriptive-markers-nontumor.html">Nontumoral tissues</a>
+    </li>
+    <li>
+      <a href="descriptive-markers-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="descriptive-markers-metastatic.html">Metastatic tumors</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Association analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">By tissue type</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-tissue-cohort.html">Cohort features</a>
+    </li>
+    <li>
+      <a href="association-tissue-markers.html">Markers features</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Primary tumors</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-primary-pdl1.html">PD-L1 expression</a>
+    </li>
+    <li>
+      <a href="association-primary-foxp3.html">FOXP3 expression</a>
+    </li>
+    <li>
+      <a href="association-primary-cd8ki67.html">CD8-Ki67 expression</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Metastatic tumors</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-metastatic-pdl1.html">PD-L1 expression</a>
+    </li>
+    <li>
+      <a href="association-metastatic-foxp3.html">FOXP3 expression</a>
+    </li>
+    <li>
+      <a href="association-metastatic-cd8ki67.html">CD8-Ki67 expression</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Outcome analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="outcome-regression-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="outcome-regression-metastatic.html">Metastatic tumors</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Outcome analysis for metastatic tumors</h1>
+
+</div>
+
+
+<hr />
+<div id="pd-l1-expression" class="section level1 tabset tabset-pills">
+<h1><strong>PD-L1 expression</strong></h1>
+<div id="overall-mortality" class="section level2">
+<h2><strong>Overall mortality</strong></h2>
+<div id="pd-l1-positivity-in-tumor-cells" class="section level3">
+<h3>PD-L1 positivity in tumor cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low PD-L1</td>
+<td align="center">7 (100)</td>
+<td align="center">31 (91.2)</td>
+</tr>
+<tr class="even">
+<td>High PD-L1</td>
+<td align="center">0 (0)</td>
+<td align="center">3 (8.8)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_tumor.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High PDL1 positivity in tumor cells</td>
+<td align="center">9606893.11 (1.3e-122, NA)</td>
+<td align="center">0.99</td>
+<td align="center">1.56 (0.47, 5.18)</td>
+<td align="center">0.49</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="pd-l1-h-score-in-tumor-cells" class="section level3">
+<h3>PD-L1 H-score in tumor cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low PD-L1</td>
+<td align="center">7 (100)</td>
+<td align="center">31 (91.2)</td>
+</tr>
+<tr class="even">
+<td>High PD-L1</td>
+<td align="center">0 (0)</td>
+<td align="center">3 (8.8)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_h.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High PDL1 H-score in tumor cells</td>
+<td align="center">9606893.11 (1.3e-122, NA)</td>
+<td align="center">0.99</td>
+<td align="center">1.56 (0.47, 5.18)</td>
+<td align="center">0.49</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_h.dead-2.png" width="672" /></p>
+</div>
+<div id="pd-l1-positivity-in-stromal-cells" class="section level3">
+<h3>PD-L1 positivity in stromal cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low PD-L1</td>
+<td align="center">5 (100)</td>
+<td align="center">20 (87)</td>
+</tr>
+<tr class="even">
+<td>High PD-L1</td>
+<td align="center">0 (0)</td>
+<td align="center">3 (13)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_stroma.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High PDL1 positivity in stromal cells</td>
+<td align="center">1.1e+07 (3.5e-122, NA)</td>
+<td align="center">0.99</td>
+<td align="center">3.92 (1.04, 14.85)</td>
+<td align="center">0.074</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_stroma.dead-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="cancer-related-mortality" class="section level2">
+<h2><strong>Cancer-related mortality</strong></h2>
+<div id="pd-l1-positivity-in-tumor-cells-1" class="section level3">
+<h3>PD-L1 positivity in tumor cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low PD-L1</td>
+<td align="center">6 (100)</td>
+<td align="center">23 (92)</td>
+</tr>
+<tr class="even">
+<td>High PD-L1</td>
+<td align="center">0 (0)</td>
+<td align="center">2 (8)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_tumor.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High PDL1 positivity in tumor cells</td>
+<td align="center">1.1e+07 (8.1e-184, NA)</td>
+<td align="center">1</td>
+<td align="center">2.07 (0.47, 9.05)</td>
+<td align="center">0.38</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="pd-l1-h-score-in-tumor-cells-1" class="section level3">
+<h3>PD-L1 H-score in tumor cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low PD-L1</td>
+<td align="center">6 (100)</td>
+<td align="center">23 (92)</td>
+</tr>
+<tr class="even">
+<td>High PD-L1</td>
+<td align="center">0 (0)</td>
+<td align="center">2 (8)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_h.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High PDL1 H-score in tumor cells</td>
+<td align="center">1.1e+07 (8.1e-184, NA)</td>
+<td align="center">1</td>
+<td align="center">2.07 (0.47, 9.05)</td>
+<td align="center">0.38</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_h.dod-2.png" width="672" /></p>
+</div>
+<div id="pd-l1-positivity-in-stromal-cells-1" class="section level3">
+<h3>PD-L1 positivity in stromal cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low PD-L1</td>
+<td align="center">5 (100)</td>
+<td align="center">13 (81.2)</td>
+</tr>
+<tr class="even">
+<td>High PD-L1</td>
+<td align="center">0 (0)</td>
+<td align="center">3 (18.8)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_stroma.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High PDL1 positivity in stromal cells</td>
+<td align="center">4.4e+07 (7.8e-205, NA)</td>
+<td align="center">1</td>
+<td align="center">2.59 (0.68, 9.79)</td>
+<td align="center">0.2</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/pdl1_stroma.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="foxp3-expression" class="section level1 tabset tabset-pills">
+<h1><strong>FOXP3 expression</strong></h1>
+<div id="overall-mortality-1" class="section level2">
+<h2><strong>Overall mortality</strong></h2>
+<div id="foxp3-positivity-in-intratumoral-lymphocytes" class="section level3">
+<h3>FOXP3 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low FOXP3</td>
+<td align="center">2 (28.6)</td>
+<td align="center">18 (54.5)</td>
+</tr>
+<tr class="even">
+<td>High FOXP3</td>
+<td align="center">5 (71.4)</td>
+<td align="center">15 (45.5)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_lymph.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High FOXP3 positivity in intratumoral lymphocytes</td>
+<td align="center">0.33 (0.043, 1.79)</td>
+<td align="center">0.23</td>
+<td align="center">0.74 (0.37, 1.49)</td>
+<td align="center">0.4</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_lymph.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="foxp3-positivity-in-stromal-lymphocytes" class="section level3">
+<h3>FOXP3 positivity in stromal lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low FOXP3</td>
+<td align="center">1 (50)</td>
+<td align="center">7 (53.8)</td>
+</tr>
+<tr class="even">
+<td>High FOXP3</td>
+<td align="center">1 (50)</td>
+<td align="center">6 (46.2)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_stroma_lymph.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High FOXP3 positivity in stromal lymphocytes</td>
+<td align="center">0.86 (0.029, 24.95)</td>
+<td align="center">0.92</td>
+<td align="center">0.49 (0.15, 1.58)</td>
+<td align="center">0.23</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_stroma_lymph.dead-2.png" width="672" /></p>
+</div>
+<div id="foxp3-positivity-in-tumor-cells" class="section level3">
+<h3>FOXP3 positivity in tumor cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low FOXP3</td>
+<td align="center">0 (NaN)</td>
+<td align="center">0 (NaN)</td>
+</tr>
+<tr class="even">
+<td>High FOXP3</td>
+<td align="center">0 (NaN)</td>
+<td align="center">0 (NaN)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_tumor.dead-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="cancer-related-mortality-1" class="section level2">
+<h2><strong>Cancer-related mortality</strong></h2>
+<div id="foxp3-positivity-in-intratumoral-lymphocytes-1" class="section level3">
+<h3>FOXP3 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low FOXP3</td>
+<td align="center">1 (16.7)</td>
+<td align="center">12 (50)</td>
+</tr>
+<tr class="even">
+<td>High FOXP3</td>
+<td align="center">5 (83.3)</td>
+<td align="center">12 (50)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_lymph.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High FOXP3 positivity in intratumoral lymphocytes</td>
+<td align="center">0.20 (0.0097, 1.49)</td>
+<td align="center">0.17</td>
+<td align="center">0.46 (0.20, 1.06)</td>
+<td align="center">0.07</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_lymph.dod-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="foxp3-positivity-in-stromal-lymphocytes-1" class="section level3">
+<h3>FOXP3 positivity in stromal lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low FOXP3</td>
+<td align="center">0 (0)</td>
+<td align="center">5 (62.5)</td>
+</tr>
+<tr class="even">
+<td>High FOXP3</td>
+<td align="center">1 (100)</td>
+<td align="center">3 (37.5)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_stroma_lymph.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High FOXP3 positivity in stromal lymphocytes</td>
+<td align="center">3.5e-09 (NA, Inf)</td>
+<td align="center">1</td>
+<td align="center">0.38 (0.073, 2.03)</td>
+<td align="center">0.24</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_stroma_lymph.dod-2.png" width="672" /></p>
+</div>
+<div id="foxp3-positivity-in-tumor-cells-1" class="section level3">
+<h3>FOXP3 positivity in tumor cells</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low FOXP3</td>
+<td align="center">0 (NaN)</td>
+<td align="center">0 (NaN)</td>
+</tr>
+<tr class="even">
+<td>High FOXP3</td>
+<td align="center">0 (NaN)</td>
+<td align="center">0 (NaN)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/foxp3_tumor.dod-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="cd8-and-ki67-expression" class="section level1 tabset tabset-pills">
+<h1><strong>CD8 and Ki67 expression</strong></h1>
+<div id="overall-mortality-2" class="section level2">
+<h2><strong>Overall mortality</strong></h2>
+<div id="cd8-positivity-in-intratumoral-lymphocytes" class="section level3">
+<h3>CD8 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8</td>
+<td align="center">2 (28.6)</td>
+<td align="center">21 (63.6)</td>
+</tr>
+<tr class="even">
+<td>High CD8</td>
+<td align="center">5 (71.4)</td>
+<td align="center">12 (36.4)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_tumor.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8 positivity in intratumoral lymphocytes</td>
+<td align="center">0.23 (0.029, 1.24)</td>
+<td align="center">0.11</td>
+<td align="center">0.89 (0.42, 1.88)</td>
+<td align="center">0.75</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cd8-ki67-positivity-in-intratumoral-lymphocytes" class="section level3">
+<h3>CD8-Ki67 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8-Ki67</td>
+<td align="center">3 (42.9)</td>
+<td align="center">27 (81.8)</td>
+</tr>
+<tr class="even">
+<td>High CD8-Ki67</td>
+<td align="center">4 (57.1)</td>
+<td align="center">6 (18.2)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_tumor.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8-Ki67 positivity in intratumoral lymphocytes</td>
+<td align="center">0.17 (0.026, 0.94)</td>
+<td align="center">0.043</td>
+<td align="center">0.45 (0.18, 1.09)</td>
+<td align="center">0.057</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cd8-positivity-in-stromal-lymphocytes" class="section level3">
+<h3>CD8 positivity in stromal lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8</td>
+<td align="center">0 (0)</td>
+<td align="center">7 (63.6)</td>
+</tr>
+<tr class="even">
+<td>High CD8</td>
+<td align="center">1 (100)</td>
+<td align="center">4 (36.4)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_stroma.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8 positivity in stromal lymphocytes</td>
+<td align="center">4.7e-09 (NA, Inf)</td>
+<td align="center">1</td>
+<td align="center">0.64 (0.16, 2.50)</td>
+<td align="center">0.51</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_stroma.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cd8-ki67-positivity-in-stromal-lymphocytes" class="section level3">
+<h3>CD8-Ki67 positivity in stromal lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8-Ki67</td>
+<td align="center">0 (0)</td>
+<td align="center">11 (91.7)</td>
+</tr>
+<tr class="even">
+<td>High CD8-Ki67</td>
+<td align="center">1 (100)</td>
+<td align="center">1 (8.3)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_stroma.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8-Ki67 positivity in stromal lymphocytes</td>
+<td align="center">4.3e-10 (NA, Inf)</td>
+<td align="center">1</td>
+<td align="center">0.65 (0.081, 5.23)</td>
+<td align="center">0.67</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_stroma.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="ki67-positivity-in-intratumoral-lymphocytes" class="section level3">
+<h3>Ki67 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD (%)</th>
+<th align="center">DOC + DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low Ki67</td>
+<td align="center">3 (42.9)</td>
+<td align="center">13 (41.9)</td>
+</tr>
+<tr class="even">
+<td>High Ki67</td>
+<td align="center">4 (57.1)</td>
+<td align="center">18 (58.1)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/ki67_tumor.dead-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High Ki67 positivity in intratumoral lymphocytes</td>
+<td align="center">1.04 (0.18, 5.51)</td>
+<td align="center">0.96</td>
+<td align="center">0.50 (0.23, 1.09)</td>
+<td align="center">0.084</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/ki67_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="cancer-related" class="section level2">
+<h2><strong>Cancer-related</strong></h2>
+<div id="cd8-positivity-in-intratumoral-lymphocytes-1" class="section level3">
+<h3>CD8 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8</td>
+<td align="center">1 (16.7)</td>
+<td align="center">15 (62.5)</td>
+</tr>
+<tr class="even">
+<td>High CD8</td>
+<td align="center">5 (83.3)</td>
+<td align="center">9 (37.5)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_tumor.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8 positivity in intratumoral lymphocytes</td>
+<td align="center">0.12 (0.0058, 0.90)</td>
+<td align="center">0.071</td>
+<td align="center">0.50 (0.21, 1.15)</td>
+<td align="center">0.098</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cd8-ki67-positivity-in-intratumoral-lymphocytes-1" class="section level3">
+<h3>CD8-Ki67 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8-Ki67</td>
+<td align="center">2 (33.3)</td>
+<td align="center">20 (83.3)</td>
+</tr>
+<tr class="even">
+<td>High CD8-Ki67</td>
+<td align="center">4 (66.7)</td>
+<td align="center">4 (16.7)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_tumor.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8-Ki67 positivity in intratumoral lymphocytes</td>
+<td align="center">0.10 (0.011, 0.68)</td>
+<td align="center">0.025</td>
+<td align="center">0.19 (0.057, 0.67)</td>
+<td align="center">0.0021</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cd8-positivity-in-stromal-lymphocytes-1" class="section level3">
+<h3>CD8 positivity in stromal lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8</td>
+<td align="center">0 (0)</td>
+<td align="center">3 (50)</td>
+</tr>
+<tr class="even">
+<td>High CD8</td>
+<td align="center">1 (100)</td>
+<td align="center">3 (50)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_stroma.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8 positivity in stromal lymphocytes</td>
+<td align="center">9.5e-09 (NA, Inf)</td>
+<td align="center">1</td>
+<td align="center">0.40 (0.065, 2.47)</td>
+<td align="center">0.32</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_stroma.dod-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cd8-ki67-positivity-in-stromal-lymphocytes-1" class="section level3">
+<h3>CD8-Ki67 positivity in stromal lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low CD8-Ki67</td>
+<td align="center">0 (0)</td>
+<td align="center">6 (85.7)</td>
+</tr>
+<tr class="even">
+<td>High CD8-Ki67</td>
+<td align="center">1 (100)</td>
+<td align="center">1 (14.3)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_stroma.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High CD8-Ki67 positivity in stromal lymphocytes</td>
+<td align="center">1.2e-09 (NA, Inf)</td>
+<td align="center">1</td>
+<td align="center">0.32 (0.038, 2.71)</td>
+<td align="center">0.24</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/cd8_ki67_stroma.dod-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="ki67-positivity-in-intratumoral-lymphocytes-1" class="section level3">
+<h3>Ki67 positivity in intratumoral lymphocytes</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC (%)</th>
+<th align="center">DOD (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Low Ki67</td>
+<td align="center">3 (50)</td>
+<td align="center">11 (50)</td>
+</tr>
+<tr class="even">
+<td>High Ki67</td>
+<td align="center">3 (50)</td>
+<td align="center">11 (50)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/ki67_tumor.dod-1.png" width="672" /></p>
+<table>
+<caption>Logistic and Cox’s proportional hazards regression models</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High Ki67 positivity in intratumoral lymphocytes</td>
+<td align="center">1.00 (0.15, 6.48)</td>
+<td align="center">1</td>
+<td align="center">0.62 (0.26, 1.48)</td>
+<td align="center">0.28</td>
+</tr>
+</tbody>
+</table>
+<p><img src="outcome-regression-metastatic_files/figure-html/ki67_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

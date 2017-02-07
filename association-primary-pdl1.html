@@ -1,0 +1,3004 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>PD-L1 expression in primary tumors</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PFCK in ccRCC</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Descriptive analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Cohort features</li>
+    <li class="divider"></li>
+    <li>
+      <a href="descriptive-cohort-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="descriptive-cohort-metastatic.html">Metastatic tumors</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Markers features</li>
+    <li class="divider"></li>
+    <li>
+      <a href="descriptive-markers-nontumor.html">Nontumoral tissues</a>
+    </li>
+    <li>
+      <a href="descriptive-markers-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="descriptive-markers-metastatic.html">Metastatic tumors</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Association analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">By tissue type</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-tissue-cohort.html">Cohort features</a>
+    </li>
+    <li>
+      <a href="association-tissue-markers.html">Markers features</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Primary tumors</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-primary-pdl1.html">PD-L1 expression</a>
+    </li>
+    <li>
+      <a href="association-primary-foxp3.html">FOXP3 expression</a>
+    </li>
+    <li>
+      <a href="association-primary-cd8ki67.html">CD8-Ki67 expression</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Metastatic tumors</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-metastatic-pdl1.html">PD-L1 expression</a>
+    </li>
+    <li>
+      <a href="association-metastatic-foxp3.html">FOXP3 expression</a>
+    </li>
+    <li>
+      <a href="association-metastatic-cd8ki67.html">CD8-Ki67 expression</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Outcome analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="outcome-regression-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="outcome-regression-metastatic.html">Metastatic tumors</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">PD-L1 expression in primary tumors</h1>
+
+</div>
+
+
+<hr />
+<div id="pd-l1-positivity-in-tumor-cells" class="section level1 tabset tabset-pills">
+<h1><strong>PD-L1 positivity in tumor cells</strong></h1>
+<div id="clinical-features" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1.3</td>
+<td align="center">4.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">8.1</td>
+<td align="center">18.9</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">52.5</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">526</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.age_group-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">5.3</td>
+<td align="center">1.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">22.9</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">52.5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">515</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4.7e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.sex-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">3.1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">15.3</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">2.626</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.45</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.race-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.race-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="history-of-other-malignancies" class="section level3">
+<h3>History of other malignancies</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No other tumor</th>
+<th align="center">Prostate cancer</th>
+<th align="center">Other tumor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.7</td>
+<td align="center">0.1</td>
+<td align="center">1.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.8</td>
+<td align="center">0.2</td>
+<td align="center">3.5</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0.5</td>
+<td align="center">10.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">1.942</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.38</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.other_tumor-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.other_tumor-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="pathologic-features" class="section level2">
+<h2><strong>Pathologic features</strong></h2>
+<div id="tumor-size-group" class="section level3">
+<h3>Tumor size group</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Smaller size</th>
+<th align="center">Larger size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0.0</td>
+<td align="center">5.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0.2</td>
+<td align="center">19.4</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">1.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">517</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">9.8e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.size_group-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.size_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="multifocality" class="section level3">
+<h3>Multifocality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Single tumor</th>
+<th align="center">Multifocal tumor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.8</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.5</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">306</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.6e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.multifocal-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.multifocal-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="fuhrman-grade" class="section level3">
+<h3>Fuhrman grade</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">G1</th>
+<th align="center">G2</th>
+<th align="center">G3</th>
+<th align="center">G4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0</td>
+<td align="center">0.1</td>
+<td align="center">7.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0</td>
+<td align="center">0.2</td>
+<td align="center">23.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">0</td>
+<td align="center">1.0</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">1.658</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.65</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.fuhrman-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.fuhrman-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="pt-stage" class="section level3">
+<h3>pT stage</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">pT1</th>
+<th align="center">pT2</th>
+<th align="center">pT3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1.1</td>
+<td align="center">0</td>
+<td align="center">6.5</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">7.4</td>
+<td align="center">0</td>
+<td align="center">24.2</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">52.5</td>
+<td align="center">0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">1.085</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.58</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.pt-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.pt-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="surgical-margin" class="section level3">
+<h3>Surgical margin</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Negative margin</th>
+<th align="center">Positive margin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.6</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">13.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">146</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4.7e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.margin-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.margin-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="tumor-progression" class="section level3">
+<h3>Tumor progression</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No tumor progression</th>
+<th align="center">Tumor progression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.4</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">276</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.9e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.progression-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.progression-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="overall-mortality" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">396</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.dead-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.4</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">13.6</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">76</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">6.3e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.dod-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="pd-l1-h-score-in-tumor-cells" class="section level1 tabset tabset-pills">
+<h1><strong>PD-L1 H-score in tumor cells</strong></h1>
+<div id="clinical-features-1" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years-1" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1.3</td>
+<td align="center">4.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">8.1</td>
+<td align="center">18.9</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">52.5</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">526</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.age_group-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex-1" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">5.3</td>
+<td align="center">1.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">22.9</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">52.5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">515</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4.7e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.sex-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race-1" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">3.1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">15.3</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">2.626</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.45</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.race-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.race-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="history-of-other-malignancies-1" class="section level3">
+<h3>History of other malignancies</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No other tumor</th>
+<th align="center">Prostate cancer</th>
+<th align="center">Other tumor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.7</td>
+<td align="center">0.1</td>
+<td align="center">1.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.8</td>
+<td align="center">0.2</td>
+<td align="center">3.5</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0.5</td>
+<td align="center">10.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">1.942</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.38</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.other_tumor-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.other_tumor-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="pathologic-features-1" class="section level2">
+<h2><strong>Pathologic features</strong></h2>
+<div id="tumor-size-group-1" class="section level3">
+<h3>Tumor size group</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Smaller size</th>
+<th align="center">Larger size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0.0</td>
+<td align="center">5.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0.2</td>
+<td align="center">19.4</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">1.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">517</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">9.8e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.size_group-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.size_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="multifocality-1" class="section level3">
+<h3>Multifocality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Single tumor</th>
+<th align="center">Multifocal tumor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.8</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.5</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">306</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.6e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.multifocal-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.multifocal-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="fuhrman-grade-1" class="section level3">
+<h3>Fuhrman grade</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">G1</th>
+<th align="center">G2</th>
+<th align="center">G3</th>
+<th align="center">G4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0</td>
+<td align="center">0.1</td>
+<td align="center">7.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0</td>
+<td align="center">0.2</td>
+<td align="center">23.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">0</td>
+<td align="center">1.0</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">1.658</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.65</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.fuhrman-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.fuhrman-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="pt-stage-1" class="section level3">
+<h3>pT stage</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">pT1</th>
+<th align="center">pT2</th>
+<th align="center">pT3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1.1</td>
+<td align="center">0</td>
+<td align="center">6.5</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">7.4</td>
+<td align="center">0</td>
+<td align="center">24.2</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">52.5</td>
+<td align="center">0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">1.085</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.58</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.pt-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.pt-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="surgical-margin-1" class="section level3">
+<h3>Surgical margin</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Negative margin</th>
+<th align="center">Positive margin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.6</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">13.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">146</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4.7e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.margin-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.margin-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features-1" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="tumor-progression-1" class="section level3">
+<h3>Tumor progression</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No tumor progression</th>
+<th align="center">Tumor progression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.4</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">276</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.9e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.progression-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.progression-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="overall-mortality-1" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">14.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">396</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.dead-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality-1" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.4</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">13.6</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">76</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">6.3e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_h.dod-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_h.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="pd-l1-positivity-in-stromal-cells" class="section level1 tabset tabset-pills">
+<h1><strong>PD-L1 positivity in stromal cells</strong></h1>
+<div id="clinical-features-2" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years-2" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.8</td>
+<td align="center">0.7</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">11.0</td>
+<td align="center">2.4</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">10.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">306</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">7.3e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.age_group-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex-2" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">5.8</td>
+<td align="center">0.9</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">18.0</td>
+<td align="center">3.0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.5</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">15.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">239</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.sex-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race-2" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">9.8</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">10.6</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">15.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">4.204</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.24</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.race-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.race-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="history-of-other-malignancies-2" class="section level3">
+<h3>History of other malignancies</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No other tumor</th>
+<th align="center">Prostate cancer</th>
+<th align="center">Other tumor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.4</td>
+<td align="center">0</td>
+<td align="center">0.6</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">9.7</td>
+<td align="center">0</td>
+<td align="center">1.3</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">0</td>
+<td align="center">3.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">0.9242</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.63</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.other_tumor-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.other_tumor-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="pathologic-features-2" class="section level2">
+<h2><strong>Pathologic features</strong></h2>
+<div id="tumor-size-group-2" class="section level3">
+<h3>Tumor size group</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Smaller size</th>
+<th align="center">Larger size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">3.3</td>
+<td align="center">0.9</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">12.5</td>
+<td align="center">2.3</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">10.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">292</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">8.2e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.size_group-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.size_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="multifocality-2" class="section level3">
+<h3>Multifocality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Single tumor</th>
+<th align="center">Multifocal tumor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.3</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">9.3</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">132</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.multifocal-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.multifocal-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="fuhrman-grade-2" class="section level3">
+<h3>Fuhrman grade</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">G1</th>
+<th align="center">G2</th>
+<th align="center">G3</th>
+<th align="center">G4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">15</td>
+<td align="center">2.7</td>
+<td align="center">0.6</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">NA</td>
+<td align="center">11.6</td>
+<td align="center">1.4</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">15</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">15</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">15</td>
+<td align="center">60.0</td>
+<td align="center">5.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">6.359</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.095</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.fuhrman-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.fuhrman-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="pt-stage-2" class="section level3">
+<h3>pT stage</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">pT1</th>
+<th align="center">pT2</th>
+<th align="center">pT3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.9</td>
+<td align="center">0</td>
+<td align="center">0.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">10.7</td>
+<td align="center">0</td>
+<td align="center">0.8</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">0</td>
+<td align="center">3.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">0.8985</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.64</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.pt-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.pt-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="surgical-margin-2" class="section level3">
+<h3>Surgical margin</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Negative margin</th>
+<th align="center">Positive margin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">9.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">56</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.2e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.margin-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.margin-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features-2" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="tumor-progression-2" class="section level3">
+<h3>Tumor progression</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No tumor progression</th>
+<th align="center">Tumor progression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.3</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">9.3</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">159</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.4e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.progression-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.progression-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="overall-mortality-2" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.4</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">9.5</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">1.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">182</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.dead-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality-2" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">9.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">60.0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">57</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.3e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.dod-1.png" width="672" /><img src="association-primary-pdl1_files/figure-html/pdl1_stroma.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

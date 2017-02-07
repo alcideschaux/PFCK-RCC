@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>CD8 and Ki67 expression in metastatic tumors</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PFCK in ccRCC</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Descriptive analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Cohort features</li>
+    <li class="divider"></li>
+    <li>
+      <a href="descriptive-cohort-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="descriptive-cohort-metastatic.html">Metastatic tumors</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Markers features</li>
+    <li class="divider"></li>
+    <li>
+      <a href="descriptive-markers-nontumor.html">Nontumoral tissues</a>
+    </li>
+    <li>
+      <a href="descriptive-markers-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="descriptive-markers-metastatic.html">Metastatic tumors</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Association analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">By tissue type</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-tissue-cohort.html">Cohort features</a>
+    </li>
+    <li>
+      <a href="association-tissue-markers.html">Markers features</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Primary tumors</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-primary-pdl1.html">PD-L1 expression</a>
+    </li>
+    <li>
+      <a href="association-primary-foxp3.html">FOXP3 expression</a>
+    </li>
+    <li>
+      <a href="association-primary-cd8ki67.html">CD8-Ki67 expression</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Metastatic tumors</li>
+    <li class="divider"></li>
+    <li>
+      <a href="association-metastatic-pdl1.html">PD-L1 expression</a>
+    </li>
+    <li>
+      <a href="association-metastatic-foxp3.html">FOXP3 expression</a>
+    </li>
+    <li>
+      <a href="association-metastatic-cd8ki67.html">CD8-Ki67 expression</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Outcome analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="outcome-regression-primary.html">Primary tumors</a>
+    </li>
+    <li>
+      <a href="outcome-regression-metastatic.html">Metastatic tumors</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">CD8 and Ki67 expression in metastatic tumors</h1>
+
+</div>
+
+
+<hr />
+<div id="cd8-positivity-in-intratumoral-lymphocytes" class="section level1 tabset tabset-pills">
+<h1><strong>CD8 positivity in intratumoral lymphocytes</strong></h1>
+<div id="clinical-features" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">29.7</td>
+<td align="center">19.5</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">41.6</td>
+<td align="center">25.6</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">5.5</td>
+<td align="center">10.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">49.0</td>
+<td align="center">18.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">150.0</td>
+<td align="center">96.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">184</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">9.2e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.age_group-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">17.2</td>
+<td align="center">26.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">22.7</td>
+<td align="center">36.1</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">8.0</td>
+<td align="center">10.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">12.0</td>
+<td align="center">22.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">68.0</td>
+<td align="center">150.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">155</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.6e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.sex-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">24.3</td>
+<td align="center">5.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">33.0</td>
+<td align="center">0.7</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">9.5</td>
+<td align="center">5.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">23.2</td>
+<td align="center">0.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">5.0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">150.0</td>
+<td align="center">6.0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">0.4669</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.49</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.race-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.race-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="overall-mortality" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">49.1</td>
+<td align="center">17.9</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">34.2</td>
+<td align="center">29.7</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">64.0</td>
+<td align="center">8.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">42.0</td>
+<td align="center">16.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">4.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">96.0</td>
+<td align="center">150.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">176</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">3.3e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.dead-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">56.7</td>
+<td align="center">20.8</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">30.5</td>
+<td align="center">33.9</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">64.0</td>
+<td align="center">8.5</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">18.8</td>
+<td align="center">13.1</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">5.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">96.0</td>
+<td align="center">150.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">116</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.2e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.dod-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="cd8ki67-positivity-in-intratumoral-lymphocytes" class="section level1 tabset tabset-pills">
+<h1><strong>CD8–Ki67 positivity in intratumoral lymphocytes</strong></h1>
+<div id="clinical-features-1" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years-1" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0.2</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0.4</td>
+<td align="center">0.8</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">1.0</td>
+<td align="center">3.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">170</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.2e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.age_group-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex-1" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0.2</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0.6</td>
+<td align="center">0.7</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0.8</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">2.0</td>
+<td align="center">3.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">152</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">3.9e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.sex-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race-1" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0.4</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0.7</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.4</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">3.0</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">0.6698</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.41</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.race-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.race-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features-1" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="overall-mortality-1" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0.9</td>
+<td align="center">0.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">1.1</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">1.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">1.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">3.0</td>
+<td align="center">2.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">162</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">3.1e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.dead-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality-1" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1.0</td>
+<td align="center">0.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">1.1</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">1.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.8</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">3.0</td>
+<td align="center">2.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">110</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.2e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.dod-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="cd8-positivity-in-stromal-lymphocytes" class="section level1 tabset tabset-pills">
+<h1><strong>CD8 positivity in stromal lymphocytes</strong></h1>
+<div id="clinical-features-2" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years-2" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1.6</td>
+<td align="center">15.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0.8</td>
+<td align="center">19.0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">1.5</td>
+<td align="center">5.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">1.1</td>
+<td align="center">26.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">2.5</td>
+<td align="center">50.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">11</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4.4e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.age_group-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex-2" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">28.0</td>
+<td align="center">4.7</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">25.5</td>
+<td align="center">7.8</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">34.0</td>
+<td align="center">2.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">25.0</td>
+<td align="center">3.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">50.0</td>
+<td align="center">25.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">18.5</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.sex-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race-2" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">10.5</td>
+<td align="center">NaN</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">16.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">2.2</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">9.4</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">Inf</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">50.0</td>
+<td align="center">-Inf</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.race-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.race-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features-2" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="overall-mortality-2" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">25</td>
+<td align="center">9.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">NA</td>
+<td align="center">16.7</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">25</td>
+<td align="center">2.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">4.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">25</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">25</td>
+<td align="center">50.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">3.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.dead-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality-2" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">25</td>
+<td align="center">15.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">NA</td>
+<td align="center">21.4</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">25</td>
+<td align="center">3.2</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">25.4</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">25</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">25</td>
+<td align="center">50.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">8.6e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.dod-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_stroma.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="cd8ki67-positivity-in-stromal-lymphocytes" class="section level1 tabset tabset-pills">
+<h1><strong>CD8–Ki67 positivity in stromal lymphocytes</strong></h1>
+<div id="clinical-features-3" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years-3" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0</td>
+<td align="center">0.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">0</td>
+<td align="center">1.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">14</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">3.9e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.age_group-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex-3" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0</td>
+<td align="center">0.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0</td>
+<td align="center">0.3</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">0</td>
+<td align="center">1.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.sex-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race-3" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">0.1</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">0.3</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">1.0</td>
+<td align="center">0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">0.1806</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.67</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.race-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.race-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features-3" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="overall-mortality-3" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">NA</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">1</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">1</td>
+<td align="center">0.5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.9e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.dead-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality-3" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">1</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">NA</td>
+<td align="center">0.2</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">1</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">1</td>
+<td align="center">0.5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">8.6e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.dod-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/cd8_ki67_stroma.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="ki67-positivity-in-intratumoral-lymphocytes" class="section level1 tabset tabset-pills">
+<h1><strong>Ki67 positivity in intratumoral lymphocytes</strong></h1>
+<div id="clinical-features-4" class="section level2">
+<h2><strong>Clinical features </strong></h2>
+<div id="patients-age-group-in-years-4" class="section level3">
+<h3>Patients’ age group, in years</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.1</td>
+<td align="center">3.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">2.4</td>
+<td align="center">3.1</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">1.0</td>
+<td align="center">2.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">1.0</td>
+<td align="center">1.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1.0</td>
+<td align="center">1.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">10.0</td>
+<td align="center">13.5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">108</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4.6e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.age_group-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.age_group-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex-4" class="section level3">
+<h3>Patients’ sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.3</td>
+<td align="center">3.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">1.8</td>
+<td align="center">3.3</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">2.0</td>
+<td align="center">2.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">2.0</td>
+<td align="center">2.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1.0</td>
+<td align="center">1.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">7.5</td>
+<td align="center">13.5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">166</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">9.4e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.sex-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.sex-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-race-4" class="section level3">
+<h3>Patients’ race</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Caucasian</th>
+<th align="center">African-American</th>
+<th align="center">Asian</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">2.8</td>
+<td align="center">1.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">2.9</td>
+<td align="center">0.7</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">2.0</td>
+<td align="center">1.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">2.0</td>
+<td align="center">0.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1.0</td>
+<td align="center">1.0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">13.5</td>
+<td align="center">2.0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">0.3429</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.56</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.race-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.race-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="outcome-features-4" class="section level2">
+<h2><strong>Outcome features</strong></h2>
+<div id="overall-mortality-4" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD</th>
+<th align="center">DOC + DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">4.2</td>
+<td align="center">2.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">4.8</td>
+<td align="center">2.2</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">2.0</td>
+<td align="center">2.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">4.5</td>
+<td align="center">1.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1.0</td>
+<td align="center">1.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">13.5</td>
+<td align="center">10.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">123</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.dead-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.dead-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="cancer-related-mortality-4" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">ANOD + AWD + DOC</th>
+<th align="center">DOD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">3.6</td>
+<td align="center">2.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">4.9</td>
+<td align="center">2.3</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">1.5</td>
+<td align="center">1.5</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">1.8</td>
+<td align="center">1.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">1.0</td>
+<td align="center">1.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">13.5</td>
+<td align="center">10.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">70</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">8.3e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.dod-1.png" width="672" /><img src="association-metastatic-cd8ki67_files/figure-html/ki67_tumor.dod-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
